@@ -3,25 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dear Minh Thư</title>
+    <title>Merry Christmas</title>
     <style>
-        /* Toàn bộ trang */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
             background: url('image.png') no-repeat center center fixed;
-            background-size: cover; /* Ảnh sẽ phủ kín màn hình */
-            background-color: #000; /* Màu nền nếu ảnh không tải được */
+            background-size: cover;
             color: #fff;
             text-align: center;
             overflow: hidden;
             min-height: 100vh;
+            position: relative;
         }
 
-        h1, p {
-            padding: 20px 0;
+        /* Tiêu đề "Merry Christmas" với hiệu ứng động */
+        h1 {
+            position: absolute;
+            top: 33%; /* Điều chỉnh để nâng tiêu đề lên cao hơn */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            color: white;
+            margin: 0;
+            animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite;
         }
+
+        /* Hiệu ứng nhấp nhô (float) */
+        @keyframes float {
+            0% {
+                transform: translate(-50%, -50%) translateY(0);
+            }
+            50% {
+                transform: translate(-50%, -50%) translateY(-20px);
+            }
+            100% {
+                transform: translate(-50%, -50%) translateY(0);
+            }
+        }
+
+        /* Hiệu ứng phát sáng (glow) */
+        @keyframes glow {
+            0% {
+                text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7);
+            }
+            50% {
+                text-shadow: 2px 2px 15px rgba(255, 0, 0, 1), 0px 0px 30px rgba(255, 255, 0, 0.8);
+            }
+            100% {
+                text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7);
+            }
+        }
+
         /* Hiệu ứng tuyết */
         .snowflake {
             position: absolute;
@@ -39,111 +74,24 @@
             }
         }
 
-        h1 {
-            font-size: 3rem;
-            margin-top: 50px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
-
-        p {
-            font-size: 1.5rem;
-            margin: 20px auto;
-            max-width: 600px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        .heart {
-            font-size: 2rem;
-            color: red;
-            animation: beat 1s infinite;
-        }
-
-        @keyframes beat {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-        }
-
+        /* Dòng chữ nhỏ ở phía dưới */
         .footer {
             position: absolute;
             bottom: 20px;
             width: 100%;
             font-size: 1rem;
             color: #ccc;
-        }
-
-        /* Tạo hiệu ứng động */
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        .message {
-            animation: float 3s ease-in-out infinite;
-        }
-    </style>
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merry Christmas</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: url('image.png') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
             text-align: center;
-            overflow: hidden;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        h1 {
-            position: absolute;
-            top: 30%; /* Điều chỉnh vị trí tiêu đề */
-            left: 50%; /* Căn giữa tiêu đề */
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Bóng chữ */
-            color: white;
-            margin: 0;
-        }
-
-        .message {
-            position: absolute;
-            top: 35%; /* Vị trí nội dung bên dưới tiêu đề */
-            left: 50%;
-            transform: translate(-50%, -50%); /* Đảm bảo căn giữa cả hai trục */
-            font-size: 1.5rem;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            color: white;
-            margin: 0;
-            text-align: center;
-            width: auto; /* Tự động theo nội dung */
-            max-width: 600px; /* Giới hạn chiều rộng tối đa */
-            z-index: 10; /* Đảm bảo không bị che */
         }
     </style>
 </head>
 <body>
-    <h1>Merry Christmas, Tômmm🎄</h1>
-    <p class="message">Chúc người yêu toaiii giáng sinh vui vẻ nhe:333</p>
-</body>
-</html>
+    <!-- Tiêu đề chính -->
+    <h1>Merry Christmas Tômmm 🎄</h1>
+
+    <!-- Dòng chữ nhỏ ở phía dưới -->
+    <div class="footer">I love you to the moon and back:3</div>
 
     <!-- Tạo các bông tuyết -->
     <script>
@@ -161,7 +109,5 @@
             snowContainer.appendChild(snowflake);
         }
     </script>
-
-    <div class="footer">I love you to the moon and back:3</div>
 </body>
 </html>
