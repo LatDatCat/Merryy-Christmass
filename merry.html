@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dear Minh Thư</title>
+    <style>
+        /* Toàn bộ trang */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('image.png') no-repeat center center fixed;
+            background-size: cover; /* Ảnh sẽ phủ kín màn hình */
+            background-color: #000; /* Màu nền nếu ảnh không tải được */
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        h1, p {
+            padding: 20px 0;
+        }
+        /* Hiệu ứng tuyết */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            user-select: none;
+            z-index: 1000;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 50px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 20px auto;
+            max-width: 600px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .heart {
+            font-size: 2rem;
+            color: red;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        /* Tạo hiệu ứng động */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .message {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('image.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        h1 {
+            position: absolute;
+            top: 30%; /* Điều chỉnh vị trí tiêu đề */
+            left: 50%; /* Căn giữa tiêu đề */
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Bóng chữ */
+            color: white;
+            margin: 0;
+        }
+
+        .message {
+            position: absolute;
+            top: 35%; /* Vị trí nội dung bên dưới tiêu đề */
+            left: 30%;
+            transform: translate(-50%, -50%); /* Đảm bảo căn giữa cả hai trục */
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            color: white;
+            margin: 0;
+            text-align: center;
+            width: auto; /* Tự động theo nội dung */
+            max-width: 600px; /* Giới hạn chiều rộng tối đa */
+            z-index: 10; /* Đảm bảo không bị che */
+        }
+    </style>
+</head>
+<body>
+    <h1>Merry Christmas, Tômmm🎄</h1>
+    <p class="message">Chúc người yêu toaiii giáng sinh vui vẻ nhe:333</p>
+</body>
+</html>
+
+    <!-- Tạo các bông tuyết -->
+    <script>
+        const snowContainer = document.body;
+        const snowflakeCount = 50; // Số bông tuyết
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.fontSize = Math.random() * 20 + 10 + 'px';
+            snowflake.style.opacity = Math.random();
+            snowContainer.appendChild(snowflake);
+        }
+    </script>
+
+    <div class="footer">I love you to the moon and back:3</div>
+</body>
+</html>
