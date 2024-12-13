@@ -5,117 +5,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merry Christmas</title>
     <style>
+        /* Toàn bộ trang */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        /* Màn hình nhập mật mã */
+        .login-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: url('minhthu.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .login-screen h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .login-screen input {
+            padding: 10px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .login-screen button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: rgba(255, 0, 0, 0.8);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-screen button:hover {
+            background-color: rgba(255, 0, 0, 1);
+        }
+
+        /* Dòng chữ "nhớ iemmm" */
+        .remember-text {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            animation: fade-in-out 2s ease-in-out;
+        }
+
+        @keyframes fade-in-out {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        /* Phần nội dung chính */
+        .main-screen {
+            display: none;
+            position: relative;
             background: url('image.png') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             text-align: center;
-            overflow: hidden;
-            min-height: 100vh;
-            position: relative;
+            height: 100vh;
         }
-        
-        
 
-        /* Tiêu đề "Merry Christmas" với hiệu ứng động */
-        h1 {
+        .main-screen h1 {
             position: absolute;
-            top: 33%; /* Điều chỉnh để nâng tiêu đề lên cao hơn */
+            top: 27%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 4rem;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            color: white;
-            margin: 0;
             animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite;
         }
 
-        /* Hiệu ứng nhấp nhô (float) */
         @keyframes float {
-            0% {
-                transform: translate(-50%, -50%) translateY(0);
-            }
-            50% {
-                transform: translate(-50%, -50%) translateY(-20px);
-            }
-            100% {
-                transform: translate(-50%, -50%) translateY(0);
-            }
+            0% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-20px); }
+            100% { transform: translate(-50%, -50%) translateY(0); }
         }
 
-        /* Hiệu ứng phát sáng (glow) */
         @keyframes glow {
-            0% {
-                text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7);
-            }
-            50% {
-                text-shadow: 2px 2px 15px rgba(255, 0, 0, 1), 0px 0px 30px rgba(255, 255, 0, 0.8);
-            }
-            100% {
-                text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7);
-            }
+            0% { text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); }
+            50% { text-shadow: 2px 2px 15px rgba(255, 0, 0, 1), 0px 0px 30px rgba(255, 255, 0, 0.8); }
+            100% { text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); }
         }
 
-        /* Hiệu ứng tuyết */
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            color: white;
-            font-size: 1em;
-            user-select: none;
-            z-index: 1000;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-
-        /* Dòng chữ nhỏ ở phía dưới */
         .footer {
             position: absolute;
             bottom: 20px;
+            left: 0;
             width: 100%;
+            text-align: center;
             font-size: 1rem;
             color: #ccc;
-            text-align: center;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
 <body>
-    
-    <!-- Nhạc nền -->
-    <audio id="background-music" autoplay loop>
-        <source src="music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    
-    <!-- Tiêu đề chính -->
-    <h1>Merry Christmas Tômmm 🎄</h1>
+    <!-- Màn hình nhập mật mã -->
+    <div class="login-screen" id="login-screen">
+        <h1>Phúc Vinh đang chờ bạn nhập mật khẩu...</h1>
+        <input type="text" id="password" placeholder="Ấn nhiều lần để mở">
+        <button id="submit-code">Ấn vào đây</button>
+    </div>
 
-    <!-- Dòng chữ nhỏ ở phía dưới -->
-    <div class="footer">I love you to the moon and back:3</div>
+    <!-- Phần nội dung chính -->
+    <div class="main-screen" id="main-screen">
+        <audio id="background-music" loop>
+            <source src="music.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <h1>Merry Christmas Tômmm 🎄</h1>
+        <div class="footer">I love you to the moon and back:3</div>
+    </div>
 
-    <!-- Tạo các bông tuyết -->
     <script>
-        const snowContainer = document.body;
-        const snowflakeCount = 50; // Số bông tuyết
+        const correctCode = 'iloveyoutothemoonandback'; // Mã bí mật
+        const loginScreen = document.getElementById('login-screen');
+        const mainScreen = document.getElementById('main-screen');
+        const music = document.getElementById('background-music');
 
-        for (let i = 0; i < snowflakeCount; i++) {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            snowflake.textContent = '❄';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
-            snowflake.style.fontSize = Math.random() * 20 + 10 + 'px';
-            snowflake.style.opacity = Math.random();
-            snowContainer.appendChild(snowflake);
+        document.getElementById('submit-code').addEventListener('click', () => {
+            const inputCode = document.getElementById('password').value.toLowerCase();
+            if (inputCode === correctCode) {
+                // Ẩn màn hình nhập mật mã
+                loginScreen.style.display = 'none';
+                // Hiển thị màn hình chính
+                mainScreen.style.display = 'block';
+                // Phát nhạc
+                music.play();
+            } else {
+                showRememberText();
+            }
+        });
+
+        function showRememberText() {
+            const text = document.createElement('div');
+            text.className = 'remember-text';
+            text.textContent = 'nhớ iemmm';
+            text.style.top = Math.random() * 80 + 'vh'; // Vị trí ngẫu nhiên theo chiều dọc
+            text.style.left = Math.random() * 80 + 'vw'; // Vị trí ngẫu nhiên theo chiều ngang
+            loginScreen.appendChild(text);
+
+            // Tự động xóa dòng chữ sau vài giây
+            setTimeout(() => {
+                text.remove();
+            }, 20000);
         }
     </script>
 </body>
