@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dear Minh Thư:3</title>
+    <style>
+        /* Toàn bộ trang */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        .snow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 10px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        /* Màn hình nhập mật mã */
+        .login-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: url('minhthu.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .login-screen h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .login-screen input {
+            padding: 10px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .login-screen button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: rgba(255, 0, 0, 0.8);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-screen button:hover {
+            background-color: rgba(255, 0, 0, 1);
+        }
+
+        @keyframes fade-in-out {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.2); }
+        }
+
+        @keyframes slide-left-right {
+            0% { transform: translateX(-50px); opacity: 0; }
+            50% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(50px); opacity: 0; }
+        }
+
+        @keyframes zoom-spin {
+            0% { transform: scale(0) rotate(0); opacity: 0; }
+            50% { transform: scale(1) rotate(180deg); opacity: 1; }
+            100% { transform: scale(0) rotate(360deg); opacity: 0; }
+        }
+
+        .remember-text {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+
+        @keyframes fade-in-out {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        /* Phần nội dung chính */
+        .main-screen {
+            display: none;
+            position: relative;
+            background: url('image.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            height: 100vh;
+        }
+
+        .main-screen h1 {
+            position: absolute;
+            top: 26%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite;
+        }
+
+        .main-screen .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            color: #ccc;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-20px); }
+            100% { transform: translate(-50%, -50%) translateY(0); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); }
+            50% { text-shadow: 2px 2px 15px rgba(255, 0, 0, 1), 0px 0px 30px rgba(255, 255, 0, 0.8); }
+            100% { text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); }
+        }
+
+        /* Giao diện thứ 3 */
+        .final-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: url('image2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden; /* Đảm bảo không hiển thị tràn ra ngoài */
+        }
+
+        /* Đoạn văn */
+        .greeting-message {
+            position: absolute;
+            bottom: 22%; /* Đưa xuống gần đáy */
+            left: 50%; /* Căn giữa ngang */
+            transform: translateX(-50%); /* Căn giữa chính xác */
+            max-width: 80%; /* Giới hạn chiều rộng đoạn văn */
+            font-size: 1.1rem; /* Kích thước chữ */
+            font-weight: bold; /* Tô đậm chữ */
+            line-height: 1.6; /* Khoảng cách dòng */
+            text-align: center; /* Căn giữa nội dung */
+            margin: 0;
+            padding: 20px; /* Khoảng cách lề trong */
+            color: #fff; /* Chữ trắng */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Hiệu ứng bóng chữ */
+            opacity: 0; /* Ẩn ban đầu */
+            animation: slide-up 2s ease-in-out forwards; /* Animation xuất hiện */
+            background: transparent; /* Nền trong suốt */
+            border-radius: 0; /* Không bo góc */
+        }
+
+        /* Animation xuất hiện từ dưới lên */
+        @keyframes slide-up {
+            0% {
+                transform: translate(-50%, 70%); /* Bắt đầu từ ngoài màn hình */
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, 0); /* Vào vị trí */
+                opacity: 1;
+            }
+        }
+
+
+        /* Ngôi sao lấp lánh */
+        .star {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: yellow;
+            border-radius: 50%;
+            animation: sparkle 3s infinite alternate;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0.5; transform: scale(1); }
+        }
+
+        /* Tuần lộc bay */
+        .reindeer {
+            position: absolute;
+            top: 3%;
+            left: -200px;
+            width: 150px;
+            animation: move-reindeer 60s infinite linear;
+            z-index: 9;
+        }
+
+        @keyframes move-reindeer {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(200vw); }
+        }
+    </style>    
+</head>
+<body>
+    <!-- Màn hình nhập mật mã -->
+    <div class="login-screen" id="login-screen">
+        <div class="snow-container" id="login-snow"></div>
+        <audio id="background-music" loop>
+            <source src="music.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        
+        <h1>Phúc Vinh đang chờ bạn nhập mật khẩu...</h1>
+        <input type="text" id="password" placeholder="Ấn nhiều lần để mở">
+        <button id="submit-code">Ấn vào đây</button>
+    </div>
+    <!-- Phần nội dung chính -->
+    <div class="main-screen" id="main-screen">
+        <div class="snow-container" id="main-snow"></div>
+        <h1>Merry Christmas Tômmm 🎄</h1>
+        <div class="footer" id="secret-message">I love you to the moon and back</div>
+    </div>
+
+    <!-- Giao diện thứ 3 -->
+    <div class="final-screen" id="final-screen">
+        <div class="snow-container" id="login-snow"></div>
+        <audio id="final-music" loop>
+            <source src="finalmusic.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="greeting-message">
+            Merry Christmas người dễ thương nhất giáng sinh năm nayyy. <br><br>
+            Nhân dịp giáng Sinh sớm với lại cũng sắp hết năm roài. <br> Cảm ơn tôm vì đã yêu a aaaaa. <br><br>
+            Người yêu toaiii đông này luôn giữ ấm và tích cực quàng khăn nhe hehehe, <br>
+            nhớ ăn cả socola nữa ụa khi nào hết thì báo nhe. <br><br> 
+            Yêu tôm vl dm cái đồ lạnh lùng girl này=]]]]]]]] 
+        </div>
+        <img src="tuanloc.png" alt="Tuần lộc" class="reindeer" id="reindeer">
+        <div id="star-container"></div>
+    </div>
+
+    <script>
+        
+        function createStar() {
+            const starContainer = document.getElementById('star-container');
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            // Vị trí ngẫu nhiên trên bầu trời
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 20 + 'vh'; // Giới hạn ở phần trên màn hình (bầu trời)
+            star.style.animationDuration = Math.random() * 3 + 1 + 's'; // Thời gian lấp lánh ngẫu nhiên
+
+            starContainer.appendChild(star);
+
+            // Xóa ngôi sao sau khi hiệu ứng kết thúc
+            setTimeout(() => {
+                star.remove();
+            }, 10000);
+        }
+
+        // Tạo sao lấp lánh liên tục trong final-screen
+        setInterval(createStar, 500); // Cứ 500ms thêm 1 ngôi sao mới
+
+        function createSnowflake(containerId) {
+            const snowContainer = document.getElementById(containerId);
+            const snowflake = document.createElement('div');
+            snowflake.textContent = '❄';
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowContainer.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        setInterval(() => createSnowflake('login-snow'), 100); // Tuyết cho login-screen
+        setInterval(() => createSnowflake('main-snow'), 100); // Tuyết cho main-screen
+
+        const correctCode = 'iloveyoutothemoonandback'; // Mã bí mật
+        const loginScreen = document.getElementById('login-screen');
+        const mainScreen = document.getElementById('main-screen');
+        const finalScreen = document.getElementById('final-screen');
+        const music = document.getElementById('background-music');
+        const finalMusic = document.getElementById('final-music');
+        const greetingMessage = document.getElementById('greeting-message');
+        const secretMessage = document.getElementById('secret-message');
+        let incorrectAttempts = 0; // Biến đếm số lần nhập sai
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const music = document.getElementById("background-music");
+            // Kiểm tra và phát nhạc khi trang tải
+            music.play().catch((err) => {
+                console.log("Trình duyệt chặn phát nhạc tự động:", err);
+            });
+
+            // Phát nhạc khi người dùng nhấn nút (nếu bị chặn trước đó)
+            document.getElementById("submit-code").addEventListener("click", () => {
+                music.play();
+            });
+        });
+
+        document.getElementById('submit-code').addEventListener('click', () => {
+            const inputCode = document.getElementById('password').value.toLowerCase();
+            if (inputCode === correctCode) {
+                // Ẩn màn hình nhập mật mã
+                loginScreen.style.display = 'none';
+                // Hiển thị màn hình chính
+                mainScreen.style.display = 'block';
+                // Phát nhạc
+                music.play();
+
+                // Thêm sự kiện click vào dòng chữ "iloveyoutothemoonandback"
+                secretMessage.addEventListener('click', () => {
+                    // Ẩn màn hình chính
+                    mainScreen.style.display = 'none';
+                    // Hiển thị màn hình thứ 3
+                    finalScreen.style.display = 'block';
+                    // Phát nhạc mới
+                    music.pause();
+                    finalMusic.play();
+                    // Kích hoạt lại animation cho đoạn văn
+                    const greetingMessage = document.querySelector('.greeting-message');
+                    greetingMessage.style.animation = 'none'; // Reset animation
+                    greetingMessage.offsetHeight; // Trigger reflow
+                    greetingMessage.style.animation = 'slide-up 8s ease-in-out forwards'; // Thêm lại animation
+
+                    // Kích hoạt lại animation cho tuần lộc
+                    const reindeer = document.querySelector('.reindeer');
+                    reindeer.style.animation = 'none'; // Reset animation
+                    reindeer.offsetHeight; // Trigger reflow
+                    reindeer.style.animation = 'move-reindeer 55s infinite linear'; // Thêm lại animation
+                    
+                });
+            } else {
+                incorrectAttempts++; // Tăng biến đếm khi nhập sai
+                if (incorrectAttempts >= 10) {
+                    showSpecialMessage(); // Hiển thị thông báo đặc biệt
+                } else {
+                    showRememberText(); // Hiển thị thông báo ngẫu nhiên
+                }
+            }
+        });
+        
+        function showRememberText() {
+            const animations = ['fade-in-out', 'slide-left-right', 'zoom-spin'];
+            
+            for (let i = 0; i < 10; i++) {
+                const text = document.createElement('div');
+                text.className = 'remember-text';
+                text.textContent = 'nhớ iemmm';
+                text.style.top = Math.random() * 90 + 'vh'; // Vị trí ngẫu nhiên theo chiều dọc
+                text.style.left = Math.random() * 90 + 'vw'; // Vị trí ngẫu nhiên theo chiều ngang
+                
+                // Áp dụng animation ngẫu nhiên
+                const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+                text.style.animation = `${randomAnimation} 2s ease-in-out`;
+
+                // Thêm vào màn hình
+                loginScreen.appendChild(text);
+
+                // Tự động xóa sau 2 giây
+                setTimeout(() => {
+                    text.remove();
+                }, 50000);
+            }
+        }
+
+        function showSpecialMessage() {
+            const specialMessage = document.createElement('div');
+            specialMessage.className = 'remember-text';
+            specialMessage.textContent = 'Bạn đã nhập sai 10 lần, vui lòng đọc thiệp để tìm từ khóa';
+            specialMessage.style.top = '30%';
+            specialMessage.style.left = '50%';
+            specialMessage.style.transform = 'translate(-50%, -50%)';
+            specialMessage.style.fontSize = '1.5rem';
+            specialMessage.style.textAlign = 'center';
+            specialMessage.style.color = 'red'; // Tô màu đỏ để nổi bật
+            loginScreen.appendChild(specialMessage);
+        }
+    </script>
+</body>
+</html>
